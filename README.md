@@ -20,10 +20,11 @@ The simulation source file allows us to supply a simulated FPGA with an input (1
 Resources used for this project:
 
 Basys 3 documentation:
+
 https://digilent.com/reference/_media/reference/programmable-logic/basys-3/basys-3_sch.pdf
 https://digilent.com/reference/_media/reference/programmable-logic/basys-3/basys3_rm.pdf
 
-Basys 3 universal constraints file (copy it, comment out unused parts, and ensure the names after "get_port" match those in the design):
+Basys 3 universal constraints file (copy it, comment out unused parts, and ensure the names after "get_port" in your constraints file match those in the design):
 https://github.com/Digilent/Basys3/blob/master/Projects/XADC_Demo/src/constraints/Basys3_Master.xdc
 
 __________________________________
