@@ -1,47 +1,39 @@
-# Blinking-LED-on-basys-3
-Blinking LED on basys 3
+Blinking LED on Basys 3
 
-This is a repository to which I put all the files that I needed to make an LED on Basys 3 LED blink.
+This repository contains all the files needed to make an LED on the Basys 3 board blink.
 
-Three files are required for that:
-1) verilog code that descrbes an FPGA behaviour
-2) File, which describes which nets in verilog files attach to which physical pins on an FPGA
-3) Verilog code that describes the inputs for simulation (I'll get more in depth below)
+Three files are required for this project:
 
-These files in Vivado are called respectively: Design source, constraints and simulation source
+1) Verilog code that describes the FPGA behavior.
+2) A file that maps nets in the Verilog code to physical pins on the FPGA (constraints file).
+3) Verilog code that describes the inputs for simulation (more details below).
+In Vivado, these files are respectively referred to as Design source, constraints, and simulation source.
 
-The project itself is not complicated at all and was done just to get more familiar with the design flow in Vivado
+The project itself is not complicated and was undertaken to gain familiarity with the design flow in Vivado.
 
-The simulation source file, also referred to as "test bench" is not particulary required in such a simple project, but still was worth creating and messing around with, since it is unavoidable nessessaty in any of the more complicated project.
-Any controlling device is useless if it cannot recive and output the information outside. What this file does is it allows us to create some inputs to an FPGA and see if the design works as intended wothout any need to provide that input signal physicaly.
+The simulation source file, also known as the "test bench," may not be necessary for such a simple project, but it was still worth creating and experimenting with. In more complicated projects, the test bench becomes essential. A controlling device is only useful if it can receive and output information externally. The test bench allows us to create simulated inputs to the FPGA and see if the design works as intended without the need to physically provide those input signals.
 
-An FPGA on basys 3 board doesn't have an internal oscilator. 100 MHz meander signal is provided externally. If I were to try and run the simulation, I wouldn't
-see that signal, because Vivado is not aware what actually is connected to an FPGA. 
+The Basys 3 board's FPGA does not have an internal oscillator. Instead, it relies on an externally provided 100 MHz meander signal. During simulation, the 100 MHz clock signal would not be visible because Vivado is unaware of the actual external connections to the FPGA.
 
-With simulation source we supply a simulated FPGA with an input (100 MHz clock in this case) that physicaly will be supplyed from components outside of an FPGA itself (external oscilator on basys 3 board).
+The simulation source file allows us to supply a simulated FPGA with an input (100 MHz clock in this case) that will be physically supplied from components outside the FPGA itself (such as the external oscillator on the Basys 3 board).
 
-Resources that were used:
-Basys 3 documentaion:
+Resources used for this project:
+
+Basys 3 documentation:
 https://digilent.com/reference/_media/reference/programmable-logic/basys-3/basys-3_sch.pdf
 https://digilent.com/reference/_media/reference/programmable-logic/basys-3/basys3_rm.pdf
 
-Basys 3 universal constrains file (copy it, comment not used, make sure the names after "get_port" match those in the design):
+Basys 3 universal constraints file (copy it, comment out unused parts, and ensure the names after "get_port" match those in the design):
 https://github.com/Digilent/Basys3/blob/master/Projects/XADC_Demo/src/constraints/Basys3_Master.xdc
+Some useful guides:
 
-Some more usefull guides:
-Basucally a short summary of the entire project (not written by me): https://circuitfever.com/led-blinking-in-fpga-verilog
-
-Sequence of progtamming an FPGA can be observed here: https://users.wpi.edu/~rjduck/Basys3%20Vivado%20Decoder%20Tutorial.pdf
+A short summary of the entire project (not written by me): https://circuitfever.com/led-blinking-in-fpga-verilog
+Sequence of programming an FPGA can be observed here: https://users.wpi.edu/~rjduck/Basys3%20Vivado%20Decoder%20Tutorial.pdf
 Or here: https://digilent.com/reference/learn/programmable-logic/tutorials/basys-3-programming-guide/start
-Or here: https://www.youtube.com/watch?v=G6T0v-qJ180 (this was my main source of "insparation")
+Or here: https://www.youtube.com/watch?v=G6T0v-qJ180 (this was my main source of "inspiration")
 
-Some messages that I had in the console and their solutions:
+Some messages that I encountered in the console and their solutions:
 
-56354 - Vivado write_bitstream - ERROR: [Drc 23-20] Rule violation (NSTD-1) Unspecified I/O Standard - X out of Y logical ports use I/O standard (IOSTANDARD) value 'DEFAULT', instead of a user assigned specific value
-https://support.xilinx.com/s/article/56354?language=en_US 
-Solution: pin names in the constraints file and design weren't matching
+Error 56354 - Vivado write_bitstream - ERROR: [Drc 23-20] Rule violation (NSTD-1) Unspecified I/O Standard - X out of Y logical ports use I/O standard (IOSTANDARD) value 'DEFAULT,' instead of a user-assigned specific value. Solution: Ensure that pin names in the constraints file and the design match correctly. For more details, see: https://support.xilinx.com/s/article/56354?language=en_US
 
-(no particular messege) Hardware manager cannot establish the connection between PC and the board 
-Solution: Change the USB cable (I had pretty decent one I though, but turns out even more expencive one can suffer from not being able to provide a data signal). 
-There are some screenshots and describtions on how the PC should behave with the right cable
-https://forum.digilent.com/topic/22715-basys-3-not-recognized-by-xilinx-vivado/
+(No particular message) Hardware manager cannot establish the connection between PC and the board. Solution: Change the USB cable (even expensive ones can suffer from not being able to provide a data signal). For screenshots and descriptions of how the PC should behave with the right cable, refer to: https://forum.digilent.com/topic/22715-basys-3-not-recognized-by-xilinx-vivado/
