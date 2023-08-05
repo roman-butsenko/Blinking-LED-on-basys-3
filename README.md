@@ -25,6 +25,8 @@ https://digilent.com/reference/_media/reference/programmable-logic/basys-3/basys
 
 Basys 3 universal constraints file (copy it, comment out unused parts, and ensure the names after "get_port" match those in the design):
 https://github.com/Digilent/Basys3/blob/master/Projects/XADC_Demo/src/constraints/Basys3_Master.xdc
+
+__________________________________
 Some useful guides:
 
 A short summary of the entire project (not written by me): https://circuitfever.com/led-blinking-in-fpga-verilog
