@@ -17,6 +17,8 @@ The Basys 3 board's FPGA does not have an internal oscillator. Instead, it relie
 
 The simulation source file allows us to supply a simulated FPGA with an input (100 MHz clock in this case) that will be physically supplied from components outside the FPGA itself (such as the external oscillator on the Basys 3 board).
 
+______________________________________
+
 Resources used for this project:
 
 Basys 3 documentation:
@@ -34,6 +36,8 @@ A short summary of the entire project (not written by me): https://circuitfever.
 Sequence of programming an FPGA can be observed here: https://users.wpi.edu/~rjduck/Basys3%20Vivado%20Decoder%20Tutorial.pdf
 Or here: https://digilent.com/reference/learn/programmable-logic/tutorials/basys-3-programming-guide/start
 Or here: https://www.youtube.com/watch?v=G6T0v-qJ180 (this was my main source of "inspiration")
+
+Short testbench writing guide: https://www.realdigital.org/doc/8b5ffef81fd0d0a8ab8554ad6cffa863
 
 Some messages that I encountered in the console and their solutions:
 
